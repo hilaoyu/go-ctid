@@ -2,11 +2,11 @@ go get github.com/hilaoyu/go-ctid
 
 
 c := ctideasy.NewCtidEasyClient("<orgCode>")  
-err = c.SetSignPrivateKey(priKey)  
+err = c.SetSignPrivateKey(<sign priKey>)  
 fmt.Println("SetPrivateKey err", err)  
-err = c.SetSignPublicKey(pubKey)  
+err = c.SetSignPublicKey(<sign pubKey>)  
 fmt.Println("SetPublicKey err", err)  
-err = c.SetDataEncodePublicKey(dataPubKey)  
+err = c.SetDataEncodePublicKey(<data encode PubKey>)  
 fmt.Println("SetDataEncodePublicKey err", err)  
 
 resultData, err := c.Verification(&ctideasy.EasyVerificationRequestBizPackageBizData{  
