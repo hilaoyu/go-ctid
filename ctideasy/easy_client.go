@@ -130,7 +130,12 @@ func (cc *CtidEasyClient) EncodeRetainData(retainData *EasyVerificationRequestAu
 	}
 
 	aesKey := utilRandom.RandString(16)
-	enData, iv, err := utilEnc.AesCBCEncrypt(jsonByte, []byte(aesKey))
+	enc := utilEnc.NewAesEncryptor(aesKey)
+	iv, err := enc.RandIv()
+	if nil != err {
+		return
+	}
+	enData, err := enc.EncryptByte(jsonByte, iv)
 	if nil != err {
 		return
 	}
